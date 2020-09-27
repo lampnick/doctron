@@ -1,0 +1,10 @@
+*.exe
+*.test
+*.prof
+deploypkg/*
+.idea/
+.DS_Store
+.vscode
+debug
+*.so
+vendor/*
