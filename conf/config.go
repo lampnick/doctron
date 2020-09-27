@@ -4,7 +4,16 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/lampnick/doctron/pkg/alioss"
 )
+
+const (
+	DoctronUploaderAliOss = "alioss"
+	DoctronUploaderMock   = "mockUploader"
+)
+
+var LoadedConfig *Config
+var OssConfig alioss.OssConfig
 
 type Config struct {
 	Doctron Doctron
@@ -17,8 +26,10 @@ type Doctron struct {
 	Retry            bool
 	MaxConvertQueue  int
 	ConvertTimeout   int
-	TLSCertFile	string
-	TLSKeyFile string
+	Uploader         string
+	Domain           string
+	TLSCertFile      string
+	TLSKeyFile       string
 	User             []User
 }
 
@@ -35,8 +46,44 @@ type Oss struct {
 	PrivateServerDomain string
 }
 
+const defaultMaxConvertWorker = 100
+const EnvProd = "prod"
+const defaultRetry = false
+const defaultMaxConvertQueue = 100
+const defaultConvertTimeout = 30
+const defaultUploader = DoctronUploaderAliOss
+const mockUploader = DoctronUploaderMock
+const defaultDomain = ":8080"
+const defaultUsername = "doctron"
+const defaultPassword = "lampnick"
+
 func NewConfig() *Config {
-	return &Config{}
+	return &Config{
+		Doctron: Doctron{
+			MaxConvertWorker: defaultMaxConvertWorker,
+			Env:              EnvProd,
+			Retry:            defaultRetry,
+			MaxConvertQueue:  defaultMaxConvertQueue,
+			ConvertTimeout:   defaultConvertTimeout,
+			Uploader:         defaultUploader,
+			Domain:           defaultDomain,
+			TLSCertFile:      "",
+			TLSKeyFile:       "",
+			User: []User{
+				{
+					Username: defaultUsername,
+					Password: defaultPassword,
+				},
+			},
+		},
+		Oss: Oss{},
+	}
+}
+
+func NewMockConfig() *Config {
+	config := NewConfig()
+	config.Doctron.Uploader = mockUploader
+	return config
 }
 
 func (conf *Config) String() string {

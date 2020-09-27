@@ -1,0 +1,13 @@
+FROM lampnick/golang:v1.15.2-centos
+
+MAINTAINER lampnick <nick@lampnick.com>
+
+RUN mkdir -p /doctron
+COPY . /doctron
+RUN cd /doctron && \
+    go build && \
+    cp -fr doctron /usr/local/bin && \
+    chmod +x /usr/local/bin/doctron && \
+    rm -fr /doctron/*
+
+CMD doctron

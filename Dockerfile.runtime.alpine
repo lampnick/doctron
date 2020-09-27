@@ -1,0 +1,34 @@
+FROM alpine:3.12.0
+
+MAINTAINER lampnick <nick@lampnick.com>
+
+RUN echo "https://mirrors.aliyun.com/alpine/v3.12/main" > /etc/apk/repositories && \
+    echo "https://mirrors.aliyun.com/alpine/v3.12/community" >> /etc/apk/repositories && \
+    echo "https://mirrors.aliyun.com/alpine/v3.12/releases" >> /etc/apk/repositories && \
+    apk upgrade -U -a && \
+    apk add \
+    git \
+    curl \
+    wget \
+    chromium  \
+    freetype \
+    harfbuzz \
+    libstdc++ \
+    nss \
+    ttf-freefont \
+    && rm -fr /var/cache/* && \
+    mkdir /var/cache/apk
+
+RUN cd /usr/share/fonts && \
+    git clone --progress --verbose https://github.com/lampnick/free-fonts.git && \
+    mv free-fonts/* ./ && \
+    mkfontscale && \
+    mkfontdir && \
+    fc-cache && \
+    fc-list :lang=zh
+
+RUN chromium-browser --version
+
+# auto run chrome headless
+#ENTRYPOINT ["chromium-browser", "--headless", "--no-first-run", "---no-sandbox", "--disable-gpu", "--disable-dev-shm-usage", "--disable-setuid-sandbox", "--fast-start", "--single-process", "--disable-renderer-backgrounding", "--disable-sync", "--enable-automation", "--hide-scrollbars", "--mute-audio"]
+

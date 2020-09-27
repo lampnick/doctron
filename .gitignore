@@ -8,3 +8,6 @@ deploypkg/*
 debug
 *.so
 vendor/*
+doctron
+conf/dev-default.yaml
+__debug_bin

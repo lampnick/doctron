@@ -1,0 +1,20 @@
+doctron:
+  maxConvertWorker: 10
+  env: dev
+  retry: true
+  maxConvertQueue: 50
+  convertTimeout: 10
+  uploader: alioss
+  domain: 0.0.0.0:8080
+  TLSCertFile: certfile
+  TLSKeyFile: keyfile
+  user:
+    - username: doctron
+      password: lampnick
+oss:
+  endpoint: 
+  accessKeyId: 
+  accessKeySecret: 
+  bucketName: 
+  privateServerDomain: 
+

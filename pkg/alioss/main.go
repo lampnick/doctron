@@ -2,17 +2,19 @@ package alioss
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
+	"gopkg.in/go-playground/validator.v9"
 )
 
 //OSS config
 type OssConfig struct {
-	Endpoint                 string
-	AccessKeyId              string
-	AccessKeySecret          string
-	BucketName               string
-	PrivateImageServerDomain string
+	Endpoint            string `validate:"required"`
+	AccessKeyId         string `validate:"required"`
+	AccessKeySecret     string `validate:"required"`
+	BucketName          string `validate:"required"`
+	PrivateServerDomain string `validate:"required"`
 }
 type OssHelper struct {
 	client *oss.Client
@@ -20,6 +22,11 @@ type OssHelper struct {
 }
 
 func NewOssHelper(c OssConfig, options ...oss.ClientOption) (*OssHelper, error) {
+	validate := validator.New()
+	err := validate.Struct(c)
+	if err != nil {
+		return nil, errors.New("alioss uploader config not set")
+	}
 	client, e := oss.New(c.Endpoint, c.AccessKeyId, c.AccessKeySecret, options...)
 	if e != nil {
 		return nil, e
@@ -42,5 +49,5 @@ func (h OssHelper) Upload(objectKey string, b []byte, options ...oss.Option) (ur
 	if err != nil {
 		return "", err
 	}
-	return fmt.Sprintf("https://%s/%s", h.config.PrivateImageServerDomain, objectKey), nil
+	return fmt.Sprintf("https://%s/%s", h.config.PrivateServerDomain, objectKey), nil
 }

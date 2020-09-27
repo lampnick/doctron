@@ -17,20 +17,19 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/Jeffail/tunny"
+	"github.com/lampnick/doctron/worker"
+	"os"
+
+	"github.com/lampnick/doctron/app"
 	"github.com/lampnick/doctron/conf"
 	"github.com/spf13/cobra"
-	"os"
 
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/viper"
 )
 
-const version = "0.1.0"
-
 var cfgFile string
-
-//doctron config
-var config *conf.Config
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -40,8 +39,17 @@ var rootCmd = &cobra.Command{
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {
-		startHttp()
+		initDoctronWorker()
+		doctron := app.NewDoctron()
+		err := doctron.Listen(conf.LoadedConfig.Doctron.Domain)
+		if err != nil {
+			doctron.Logger().Fatal("start doctron failed. %v", err)
+		}
 	},
+}
+
+func initDoctronWorker() {
+	worker.Pool = tunny.NewFunc(conf.LoadedConfig.Doctron.MaxConvertWorker,worker.DoctronHandler)
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -88,25 +96,34 @@ func initConfig() {
 	viper.AutomaticEnv() // read in environment variables that match
 
 	// If a config file is found, read it in.
+	conf.LoadedConfig = conf.NewConfig()
 	if err := viper.ReadInConfig(); err == nil {
 		fmt.Println("Using config file:", viper.ConfigFileUsed())
-		config = conf.NewConfig()
 		//config.Doctron.Env = viper.GetString("doctron.env")
 		//config.Doctron.Retry = viper.GetBool("doctron.retry")
 		//config.Doctron.MaxConvertQueue = viper.GetInt("doctron.maxConvertQueue")
 		//config.Doctron.MaxConvertWorker = viper.GetInt("doctron.maxConvertWorker")
 		//config.Doctron.ConvertTimeout = viper.GetInt("doctron.convertTimeout")
 		//err := viper.UnmarshalKey("doctron.user", &config.Doctron.User)
-		err := viper.UnmarshalKey("doctron", &config.Doctron)
+		err := viper.UnmarshalKey("doctron", &conf.LoadedConfig.Doctron)
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)
 		}
-		err = viper.UnmarshalKey("oss", &config.Oss)
+		err = viper.UnmarshalKey("oss", &conf.LoadedConfig.Oss)
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)
 		}
-		fmt.Printf("[loaded config] %#s\r\n",config)
 	}
+	fmt.Printf("[loaded config] %s\r\n", conf.LoadedConfig)
+	initOssConfig(conf.LoadedConfig)
+}
+
+func initOssConfig(config *conf.Config) {
+	conf.OssConfig.Endpoint = config.Oss.Endpoint
+	conf.OssConfig.AccessKeyId = config.Oss.AccessKeyId
+	conf.OssConfig.AccessKeySecret = config.Oss.AccessKeySecret
+	conf.OssConfig.BucketName = config.Oss.BucketName
+	conf.OssConfig.PrivateServerDomain = config.Oss.PrivateServerDomain
 }
