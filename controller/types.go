@@ -40,3 +40,9 @@ type Html2ImageRequestDTO struct {
 	ClipScale   float64                      `schema:"clipScale,omitempty" validate:"omitempty"`   // Capture the screenshot of a given region only.Page scale factor.
 	FromSurface bool                         `schema:"fromSurface,omitempty" validate:"omitempty"` // Capture the screenshot from the surface, rather than the view. Defaults to true.
 }
+
+type PdfWatermarkRequestDTO struct {
+	CommonRequestDTO
+	WatermarkType int    `schema:"watermarkType,omitempty" validate:"omitempty"` // watermark type will support soon
+	ImageUrl      string `schema:"imageUrl,omitempty" validate:"required,url"`   // watermark image url
+}
