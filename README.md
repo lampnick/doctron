@@ -13,7 +13,7 @@ open the following website to have a try.
   * [Html convert to pdf](#html-convert-to-pdf)
   * [Html convert to image](#html-convert-to-image)
   * [Pdf add watermark](#pdf-add-watermark)
-  * [Pdf convert to image](#pdf-convert-to-image)
+  * [Pdf convert to image](#pdf-convert-to-image)[not implement,arriving soon]
 - [License](#license)
 
 ## Features
@@ -64,7 +64,10 @@ http://127.0.0.1:8080/convert/html2image?u=doctron&p=lampnick&url=<url>
 http://127.0.0.1:8080/convert/html2image?u=doctron&p=lampnick&url=<url>&customClip=true&clipX=0&clipY=0&clipWidth=400&clipHeight=1500&clipScale=2&format=jpeg&Quality=80  
 ```
 ### Pdf add watermark
-- coming soon
+- add image watermark
+```
+http://127.0.0.1:8080/convert/pdfAddWatermark?u=doctron&p=lampnick&url=<pdf url>&imageUrl=<image url>
+```
 
 ### Pdf convert to image
 - coming soon
