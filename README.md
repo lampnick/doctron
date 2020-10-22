@@ -5,6 +5,9 @@ Doctron is a sample,fast,high quality document convert tool.Supply html convert 
 open the following website to have a try.
 [Doctron Live Demo](http://doctron.lampnick.com)
 
+## Encourage
+If you feel doctron is not bad, give me a star and fork.Star and fork is my greatest encouragement！
+
 ## Table of Contents
 
 - [Features](#features)
