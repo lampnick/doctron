@@ -1,8 +1,8 @@
 doctron:
-  maxConvertWorker: 10
-  env: dev
+  maxConvertWorker: 50
+  env: prod
   retry: true
-  maxConvertQueue: 50
+  maxConvertQueue: 60
   convertTimeout: 10
   uploader: alioss
   domain: 0.0.0.0:8080

@@ -17,6 +17,9 @@ If you feel doctron is not bad, give me a star and fork.Star and fork is my grea
   * [Html convert to image](#html-convert-to-image)
   * [Pdf add watermark](#pdf-add-watermark)
   * [Pdf convert to image](#pdf-convert-to-image)[not implement,arriving soon]
+- [Doctron Client](#doctron-client)
+  * [Doctron go client](#doctron-client-go)
+  * [Doctron php client](#doctron-client-php)
 - [License](#license)
 
 ## Features
@@ -49,31 +52,75 @@ go run main.go
 
 ## Quick Start
 ### Html convert to pdf
-- basic
+###### basic
 ```
 http://127.0.0.1:8080/convert/html2pdf?u=doctron&p=lampnick&url=<url>  
 ```
-- custom size
+###### custom size
 ```
 http://127.0.0.1:8080/convert/html2pdf?u=doctron&p=lampnick&url=<url>&marginTop=0&marginLeft=0&marginRight=0&marginbottom=0&paperwidth=4.1  
 ```
+###### support params
+- u/username // doctron username
+- p/password // doctron password
+- uploadKey // upload to oss key
+- url // need convert html url
+- landscape // Paper orientation. core.Defaults to false.
+- displayHeaderFooter // Display header and footer. core.Defaults to false.
+- printBackground // Print background graphics. core.Defaults to false.
+- scale // Scale of the webpage rendering. core.Defaults to 1.
+- paperWidth // Paper width in inches. core.Defaults to 8.5 inches.
+- paperHeight // Paper height in inches. core.Defaults to 11 inches.
+- marginTop // Top margin in inches. core.Defaults to 1cm (~0.4 inches).
+- marginBottom // Bottom margin in inches. core.Defaults to 1cm (~0.4 inches).
+- marginLeft // Left margin in inches. core.Defaults to 1cm (~0.4 inches).
+- marginRight // Right margin in inches. core.Defaults to 1cm (~0.4 inches).
+- pageRanges // Paper ranges to print, e.g., '1-5, 8, 11-13'. core.Defaults to the empty string, which means print all pages.
+- ignoreInvalidPageRanges // Whether to silently ignore invalid but successfully parsed page ranges, such as '3-2'. core.Defaults to false.
+
 ### Html convert to image
-- basic
+###### basic
 ```
 http://127.0.0.1:8080/convert/html2image?u=doctron&p=lampnick&url=<url>  
 ```
-- custom size
+###### custom size
 ```
 http://127.0.0.1:8080/convert/html2image?u=doctron&p=lampnick&url=<url>&customClip=true&clipX=0&clipY=0&clipWidth=400&clipHeight=1500&clipScale=2&format=jpeg&Quality=80  
 ```
+###### support params
+- u/username // doctron username
+- p/password // doctron password
+- uploadKey // upload to oss key
+- url // need convert html url
+- format // Image compression format (defaults to png).
+- quality // Compression quality from range [0..100] (jpeg only).
+- customClip //if set this value, the below clip will work,otherwise not work!
+- clipX // Capture the screenshot of a given region only.X offset in device independent pixels (dip).
+- clipY // Capture the screenshot of a given region only.Y offset in device independent pixels (dip).
+- clipWidth // Capture the screenshot of a given region only.Rectangle width in device independent pixels (dip).
+- clipHeight // Capture the screenshot of a given region only.Rectangle height in device independent pixels (dip).
+
 ### Pdf add watermark
-- add image watermark
+###### add image watermark
 ```
 http://127.0.0.1:8080/convert/pdfAddWatermark?u=doctron&p=lampnick&url=<pdf url>&imageUrl=<image url>
 ```
+###### support params
+- u/username // doctron username
+- p/password // doctron password
+- uploadKey // upload to oss key
+- url // need convert html url
+- imageUrl // watermark image url,support png/jpeg
 
 ### Pdf convert to image
-- coming soon
+###### coming soon
+
+## Doctron Client
+### Doctron go client
+###### coming soon
+
+### Doctron php client
+###### coming soon
 
 ## License
 

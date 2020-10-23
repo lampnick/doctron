@@ -46,10 +46,10 @@ type Oss struct {
 	PrivateServerDomain string
 }
 
-const defaultMaxConvertWorker = 100
+const defaultMaxConvertWorker = 50
 const EnvProd = "prod"
 const defaultRetry = false
-const defaultMaxConvertQueue = 100
+const defaultMaxConvertQueue = 60
 const defaultConvertTimeout = 30
 const defaultUploader = DoctronUploaderAliOss
 const mockUploader = DoctronUploaderMock

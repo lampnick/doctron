@@ -6,10 +6,10 @@ metadata:
 data:
   doctron-config.yaml: |+
     doctron:
-      maxConvertWorker: 10
+      maxConvertWorker: 50
       env: dev
       retry: true
-      maxConvertQueue: 100
+      maxConvertQueue: 60
       convertTimeout: 10
       uploader: alioss
       domain: 0.0.0.0:8080
@@ -21,11 +21,11 @@ data:
         - username: nick2
           password: lampnick2
     oss:
-      endpoint: oss-cn-zhangjiakou.aliyuncs.com
-      accessKeyId: LTAI4GKpor5Zxfte8FDvZnDP
-      accessKeySecret: eBGUWszUWwxqrrYMU0K0hnLGcw6Kgw
-      bucketName: qjhdqx-prod
-      privateServerDomain: qjhdqx-prod.oss-cn-zhangjiakou.aliyuncs.com
+      endpoint:
+      accessKeyId:
+      accessKeySecret:
+      bucketName:
+      privateServerDomain:
 
 ---
 
