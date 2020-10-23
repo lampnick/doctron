@@ -17,6 +17,7 @@ build-runtime-alpine:
 ## build-doctron-alpine: build doctron docker image with alpine.
 build-doctron-alpine:
 	@docker build -t $(IMAGE_NAME):$(ALPINE_IMAGE_TAG) .
+	@docker tag $(IMAGE_NAME):$(ALPINE_IMAGE_TAG) latest
 
 ## run-doctron-alpine: run doctron alpine docker image.
 run-doctron-alpine:
