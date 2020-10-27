@@ -18,8 +18,8 @@ If you feel doctron is not bad, give me a star and fork.Star and fork is my grea
   * [Pdf add watermark](#pdf-add-watermark)
   * [Pdf convert to image](#pdf-convert-to-image)[not implement,arriving soon]
 - [Doctron Client](#doctron-client)
-  * [Doctron go client](#doctron-client-go)
-  * [Doctron php client](#doctron-client-php)
+  * [Doctron go client](#doctron-go-client)
+  * [Doctron php client](#doctron-php-client)
 - [License](#license)
 
 ## Features
@@ -41,7 +41,7 @@ lampnick/doctron
 ```
 - Using k8s
 ```
-kubectl apply -f https://github.com/lampnick/doctron/manifests/k8s-doctron.yaml  
+kubectl apply -f https://github.com/lampnick/doctron/blob/master/manifests/k8s-doctron.yaml
 ```
 - From source code
 ```
@@ -117,10 +117,10 @@ http://127.0.0.1:8080/convert/pdfAddWatermark?u=doctron&p=lampnick&url=<pdf url>
 
 ## Doctron Client
 ### Doctron go client
-###### coming soon
+###### [doctron-client-go](https://github.com/lampnick/doctron-client-go)
 
 ### Doctron php client
-###### coming soon
+###### [doctron-client-php](https://github.com/lampnick/doctron-client-php)
 
 ## License
 
