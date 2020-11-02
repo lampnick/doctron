@@ -1,5 +1,5 @@
 ## Doctron description
-Doctron is a sample,fast,high quality document convert tool.Supply html convert to pdf, html convert to image(like jpeg,png), add  watermarks to pdf, convert pdf to images etc.
+Doctron is a Docker-powered,serverless,sample,fast,high quality document convert tool.Supply html convert to pdf(html2pdf), html convert to image(html2image like jpeg,png),which using chrome(Chromium) kernel, add watermarks to pdf, convert pdf to images etc.
 
 ## Online experience
 open the following website to have a try.
