@@ -41,7 +41,7 @@ lampnick/doctron
 ```
 - Using k8s
 ```
-kubectl apply -f https://github.com/lampnick/doctron/blob/master/manifests/k8s-doctron.yaml
+kubectl apply -f https://raw.githubusercontent.com/lampnick/doctron/master/manifests/k8s-doctron.yaml
 ```
 - From source code
 ```
