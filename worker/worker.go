@@ -2,6 +2,7 @@ package worker
 
 import (
 	"errors"
+
 	"github.com/Jeffail/tunny"
 	"github.com/kataras/iris/v12"
 	"github.com/lampnick/doctron/conf"
@@ -55,7 +56,7 @@ func DoctronHandler(params interface{}) interface{} {
 			uploader.UploadConfig{Key: doctronConfig.UploadKey, Stream: convertBytes},
 		)
 		uploadUrl, err := doctronUploader.Upload()
-		log(doctronConfig.IrisCtx, "uuid:[%s],doctron.Upload Elapsed [%s],url:[%s]", doctronConfig.TraceId, doctron.GetConvertElapsed(), doctronConfig.IrisCtx.Request().RequestURI)
+		log(doctronConfig.IrisCtx, "uuid:[%s],doctron.Upload Elapsed [%s],url:[%s]", doctronConfig.TraceId, doctronUploader.GetUploadElapsed(), doctronConfig.IrisCtx.Request().RequestURI)
 		if err != nil {
 			doctronOutputDTO.Err = err
 			return doctronOutputDTO
