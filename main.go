@@ -15,8 +15,17 @@ limitations under the License.
 */
 package main
 
-import "github.com/lampnick/doctron/cmd"
+import (
+	"log"
+	"net/http"
+	_ "net/http/pprof"
+
+	"github.com/lampnick/doctron/cmd"
+)
 
 func main() {
-  cmd.Execute()
+	go func() {
+		log.Println(http.ListenAndServe("localhost:6060", nil))
+	}()
+	cmd.Execute()
 }
