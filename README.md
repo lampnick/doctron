@@ -65,6 +65,13 @@ cd doctron
 go run main.go 
 ```
 
+- install doctron using `go get` 
+```
+go get -v github.com/lampnick/doctron
+When finished then directly run
+doctron
+```
+
 ## Quick Start
 ### Html convert to pdf
 ###### basic
