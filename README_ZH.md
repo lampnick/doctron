@@ -66,6 +66,13 @@ cd doctron
 go run main.go 
 ```
 
+- 使用`go get`安装
+```
+go get -v github.com/lampnick/doctron
+下载完成之后直接运行
+doctron
+```
+
 ## 快速开始
 ### Html转pdf
 ###### 基础转换
