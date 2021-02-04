@@ -3,44 +3,49 @@ package doctron_core
 import (
 	"context"
 	"errors"
+	"time"
+
 	"github.com/chromedp/cdproto/emulation"
 	"github.com/chromedp/cdproto/page"
 	"github.com/chromedp/chromedp"
-	"time"
 )
 
-// Image compression format (defaults to png).
+//FormatPng Image compression format (defaults to png).
 const FormatPng = page.CaptureScreenshotFormatPng
+
+//FormatJpeg Image compression format (defaults to png).
 const FormatJpeg = page.CaptureScreenshotFormatJpeg
 
-// Compression quality from range [0..100] (jpeg only).
+//DefaultQuality Compression quality from range [0..100] (jpeg only).
 const DefaultQuality = 0
 
-// Capture the screenshot from the surface, rather than the view. Defaults to true.
+//DefaultFromSurface Capture the screenshot from the surface, rather than the view. Defaults to true.
 const DefaultFromSurface = true
 
-// Capture the screenshot of a given region only.
+//DefaultViewportX Capture the screenshot of a given region only.
 // X offset in device independent pixels (dip).
 const DefaultViewportX = 0
 
-// Y offset in device independent pixels (dip).
+//DefaultViewportY Y offset in device independent pixels (dip).
 const DefaultViewportY = 0
 
-// Rectangle width in device independent pixels (dip).
+//DefaultViewportWidth Rectangle width in device independent pixels (dip).
 const DefaultViewportWidth = 996
 
-// Rectangle height in device independent pixels (dip).
+//DefaultViewportHeight Rectangle height in device independent pixels (dip).
 const DefaultViewportHeight = 996
 
-// Page scale factor.
+//DefaultViewportScale Page scale factor.
 const DefaultViewportScale = 1
 
-// PrintToHtml2Image print page as PDF.
+//Html2ImageParams print page as PDF.
 type Html2ImageParams struct {
 	page.CaptureScreenshotParams
-	CustomClip bool
+	CustomClip  bool
+	WaitingTime int // Waiting time after the page loaded. Default 0 means not wait. unit:Millisecond
 }
 
+//NewDefaultHtml2ImageParams default html convert to image params
 func NewDefaultHtml2ImageParams() Html2ImageParams {
 	return Html2ImageParams{
 		CustomClip: false,
@@ -56,6 +61,7 @@ func NewDefaultHtml2ImageParams() Html2ImageParams {
 			},
 			FromSurface: DefaultFromSurface,
 		},
+		WaitingTime: DefaultWaitingTime,
 	}
 }
 
@@ -82,6 +88,7 @@ func (ins *html2image) Convert() ([]byte, error) {
 
 	if err := chromedp.Run(ctx,
 		chromedp.Navigate(ins.cc.Url),
+		chromedp.Sleep(time.Duration(params.WaitingTime)*time.Millisecond),
 		chromedp.ActionFunc(func(ctx context.Context) error {
 
 			if !params.CustomClip {

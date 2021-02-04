@@ -26,6 +26,7 @@ type Html2PdfRequestDTO struct {
 	HeaderTemplate          string  `schema:"headerTemplate,omitempty" validate:"omitempty"`          // HTML template for the print header. Should be valid HTML markup with following classes used to inject printing values into them: - date: formatted print date - title: document title - url: document location - pageNumber: current page number - totalPages: total pages in the document  For example, <span class=title></span> would generate span containing the title.
 	FooterTemplate          string  `schema:"footerTemplate,omitempty" validate:"omitempty"`          // HTML template for the print footer. Should use the same format as the headerTemplate.
 	PreferCSSPageSize       bool    `schema:"preferCSSPageSize,omitempty" validate:"omitempty"`       // Whether or not to prefer page size as defined by css. core.Defaults to false, in which case the content will be scaled to fit the paper size.
+	WaitingTime             int     `schema:"waitingTime,omitempty" validate:"omitempty"`             // Waiting time after the page loaded. Default 0 means not wait. unit:Millisecond
 }
 
 type Html2ImageRequestDTO struct {
@@ -39,6 +40,7 @@ type Html2ImageRequestDTO struct {
 	ClipHeight  float64                      `schema:"clipHeight,omitempty" validate:"omitempty"`  // Capture the screenshot of a given region only.Rectangle height in device independent pixels (dip).
 	ClipScale   float64                      `schema:"clipScale,omitempty" validate:"omitempty"`   // Capture the screenshot of a given region only.Page scale factor.
 	FromSurface bool                         `schema:"fromSurface,omitempty" validate:"omitempty"` // Capture the screenshot from the surface, rather than the view. Defaults to true.
+	WaitingTime int                          `schema:"waitingTime,omitempty" validate:"omitempty"` // Waiting time after the page loaded. Default 0 means not wait. unit:Millisecond
 }
 
 type PdfWatermarkRequestDTO struct {
