@@ -99,6 +99,7 @@ http://127.0.0.1:8080/convert/html2pdf?u=doctron&p=lampnick&url=<url>&marginTop=
 - marginRight // Right margin in inches. core.Defaults to 1cm (~0.4 inches).
 - pageRanges // Paper ranges to print, e.g., '1-5, 8, 11-13'. core.Defaults to the empty string, which means print all pages.
 - ignoreInvalidPageRanges // Whether to silently ignore invalid but successfully parsed page ranges, such as '3-2'. core.Defaults to false.
+- WaitingTime // Waiting time after the page loaded. Default 0 means not wait. unit:Millisecond
 
 ### Html convert to image
 ###### basic
@@ -121,6 +122,7 @@ http://127.0.0.1:8080/convert/html2image?u=doctron&p=lampnick&url=<url>&customCl
 - clipY // Capture the screenshot of a given region only.Y offset in device independent pixels (dip).
 - clipWidth // Capture the screenshot of a given region only.Rectangle width in device independent pixels (dip).
 - clipHeight // Capture the screenshot of a given region only.Rectangle height in device independent pixels (dip).
+WaitingTime // Waiting time after the page loaded. Default 0 means not wait. unit:Millisecond
 
 ### Pdf add watermark
 ###### add image watermark

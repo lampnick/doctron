@@ -100,6 +100,7 @@ http://127.0.0.1:8080/convert/html2pdf?u=doctron&p=lampnick&url=<url>&marginTop=
 - marginRight // 右外边距，单位英尺。默认纸0.4英尺（1厘米）. 
 - pageRanges // 需要打印的PDF的页数。默认为空字符串，表示所有页面.
 - ignoreInvalidPageRanges // 是否静默的忽略掉不可用的但是成功解析的页面。例如'3-2',默认false.
+- WaitingTime // 页面加载后等待时长. 默认为0代表不等待. 单位：毫秒
 
 ### Html转图片
 ###### 基础转换
@@ -122,6 +123,7 @@ http://127.0.0.1:8080/convert/html2image?u=doctron&p=lampnick&url=<url>&customCl
 - clipY // 裁剪Y轴方向距离.
 - clipWidth // 裁剪宽度.
 - clipHeight // 裁剪高度.
+- WaitingTime // 页面加载后等待时长. 默认为0代表不等待. 单位：毫秒
 
 ### Pdf加水印
 ###### 添加图片水印

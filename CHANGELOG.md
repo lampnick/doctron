@@ -1,3 +1,6 @@
+### v0.3.0
+- support waiting time for html convert to pdf
+- support waiting time for html convert to image
 ### v0.2.0
 - add pprof
 - add chinese readme doc

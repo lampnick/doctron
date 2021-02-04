@@ -3,6 +3,8 @@ package controller
 import (
 	"context"
 	"errors"
+	"time"
+
 	"github.com/gorilla/schema"
 	uuid "github.com/iris-contrib/go.uuid"
 	"github.com/kataras/iris/v12"
@@ -13,7 +15,6 @@ import (
 	"github.com/lampnick/doctron/converter/doctron_core"
 	"github.com/lampnick/doctron/worker"
 	"gopkg.in/go-playground/validator.v9"
-	"time"
 )
 
 func Html2ImageHandler(ctx iris.Context) {
@@ -100,6 +101,7 @@ func convertToHtml2ImageParams(requestDTO *Html2ImageRequestDTO) doctron_core.Ht
 	params.Clip.Height = requestDTO.ClipHeight
 	params.Clip.Scale = requestDTO.ClipScale
 	params.FromSurface = requestDTO.FromSurface
+	params.WaitingTime = requestDTO.WaitingTime
 	return params
 }
 
@@ -114,5 +116,6 @@ func newDefaultHtml2ImageRequestDTO() *Html2ImageRequestDTO {
 		ClipHeight:  doctron_core.DefaultViewportHeight,
 		ClipScale:   doctron_core.DefaultViewportScale,
 		FromSurface: doctron_core.DefaultFromSurface,
+		WaitingTime: doctron_core.DefaultWaitingTime,
 	}
 }

@@ -3,6 +3,8 @@ package controller
 import (
 	"context"
 	"errors"
+	"time"
+
 	"github.com/gorilla/schema"
 	uuid "github.com/iris-contrib/go.uuid"
 	"github.com/kataras/iris/v12"
@@ -13,7 +15,6 @@ import (
 	"github.com/lampnick/doctron/converter/doctron_core"
 	"github.com/lampnick/doctron/worker"
 	"gopkg.in/go-playground/validator.v9"
-	"time"
 )
 
 func Html2PdfHandler(ctx iris.Context) {
@@ -106,6 +107,7 @@ func convertToPDFParams(requestDTO *Html2PdfRequestDTO) doctron_core.PDFParams {
 	params.HeaderTemplate = requestDTO.HeaderTemplate
 	params.FooterTemplate = requestDTO.FooterTemplate
 	params.PreferCSSPageSize = requestDTO.PreferCSSPageSize
+	params.WaitingTime = requestDTO.WaitingTime
 	return params
 }
 
@@ -126,5 +128,6 @@ func newDefaultHtml2PdfRequestDTO() *Html2PdfRequestDTO {
 		HeaderTemplate:          doctron_core.DefaultHeaderTemplate,
 		FooterTemplate:          doctron_core.DefaultFooterTemplate,
 		PreferCSSPageSize:       doctron_core.DefaultPreferCSSPageSize,
+		WaitingTime:             doctron_core.DefaultWaitingTime,
 	}
 }
