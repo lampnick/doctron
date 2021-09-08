@@ -7,6 +7,7 @@ const (
 	InvalidParams                       = 10000001
 	InvalidUrl                          = 10000002
 	ApiRateLimitExceeded                = 10000003
+	InvalidUrlScheme                    = 10000004
 	ConvertPdfFailed                    = 20000000
 	ConvertPdfWriteBytesFailed          = 20000001
 	ConvertPdfUploadFailed              = 20000002
@@ -28,6 +29,7 @@ var ErrMsg = map[int]string{
 	InvalidParams:                       "invalid params",
 	InvalidUrl:                          "invalid url",
 	ApiRateLimitExceeded:                "api rate limit exceeded",
+	InvalidUrlScheme:                    "only support http/https",
 	ConvertPdfFailed:                    "failed convert html to pdf",
 	ConvertPdfWriteBytesFailed:          "failed convert html to pdf. write bytes failed",
 	ConvertPdfUploadFailed:              "failed convert html to pdf. upload failed",

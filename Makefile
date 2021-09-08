@@ -1,8 +1,8 @@
 .DEFAULT: help
 
 IMAGE_NAME ?= lampnick/doctron
-CENTOS_IMAGE_TAG ?= v0.3.0-centos
-ALPINE_IMAGE_TAG ?= v0.3.0-alpine
+CENTOS_IMAGE_TAG ?= v0.3.1-centos
+ALPINE_IMAGE_TAG ?= v0.3.1-alpine
 
 help: Makefile
 	@echo "Doctron is a document convert tools for html pdf image etc.\r\n"

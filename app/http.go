@@ -19,6 +19,7 @@ func NewDoctron() *iris.Application {
 		}
 	})
 	app.PartyFunc("/convert", func(convert router.Party) {
+		convert.Use(middleware.CheckParams)
 		convert.Use(middleware.AuthMiddleware)
 		convert.Use(middleware.CheckRateLimiting)
 		convert.Get("/html2pdf", controller.Html2PdfHandler)
