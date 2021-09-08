@@ -27,6 +27,7 @@
   - [Doctron php client](#doctron-php-client)
         - [doctron-client-php](#doctron-client-php)
 - [License](#license)
+- [感谢JetBrains提供的免费GoLand](#感谢jetbrains提供的免费goland)
 ## Doctron简介
 Doctron是基于Docker、无状态、简单、快速、高质量的文档转换服务。目前支持将html转为pdf、图片(使用chrome(Chromium)浏览器内核，保证转换质量)。支持PDF添加水印。
 
@@ -150,3 +151,6 @@ http://127.0.0.1:8080/convert/pdfAddWatermark?u=doctron&p=lampnick&url=<pdf url>
 ## License
 
 Doctron is released under the Apache 2.0 license. See [LICENSE.txt](https://github.com/lampnick/doctron/blob/master/LICENSE)
+
+## [感谢JetBrains提供的免费GoLand](https://jb.gg/OpenSource)
+[![avatar](jetbrains.svg)](https://jb.gg/OpenSource)
