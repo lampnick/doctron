@@ -1,0 +1,14 @@
+# Security Policy
+
+## Supported Versions
+
+Use this section to tell people about which versions of your project are
+currently being supported with security updates.
+
+| Version | Supported          |
+| ------- | ------------------ |
+
+
+## Reporting a Vulnerability
+
+If you find any security problems,please send me an email.My email is nick@lampnick.com.
