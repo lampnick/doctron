@@ -27,6 +27,7 @@
   - [Doctron php client](#doctron-php-client)
         - [doctron-client-php](#doctron-client-php)
 - [License](#license)
+- [Thanks JetBrains provide free GoLand IDE](#thanks-jetbrains-provide-free-goland-ide)
 ## Doctron description
 Doctron is a Docker-powered,serverless,sample,fast,high quality document convert tool.Supply html convert to pdf(html2pdf), html convert to image(html2image like jpeg,png),which using chrome(Chromium) kernel, add watermarks to pdf, convert pdf to images etc.
 
@@ -149,3 +150,6 @@ http://127.0.0.1:8080/convert/pdfAddWatermark?u=doctron&p=lampnick&url=<pdf url>
 ## License
 
 Doctron is released under the Apache 2.0 license. See [LICENSE.txt](https://github.com/lampnick/doctron/blob/master/LICENSE)
+
+## [Thanks JetBrains provide free GoLand IDE](https://jb.gg/OpenSource)
+[![avatar](jetbrains.svg)](https://jb.gg/OpenSource)
