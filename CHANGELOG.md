@@ -1,3 +1,5 @@
+### v0.3.1
+- only support http/https to convert,disabled to reach file system.
 ### v0.3.0
 - support waiting time for html convert to pdf
 - support waiting time for html convert to image
