@@ -1,3 +1,6 @@
+### v0.3.2
+- record read config error 
+- update bluemonday dependence for security reason
 ### v0.3.1
 - only support http/https to convert,disabled to reach file system.
 ### v0.3.0
