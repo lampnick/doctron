@@ -16,10 +16,10 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
+	"log"
+
 	"github.com/Jeffail/tunny"
 	"github.com/lampnick/doctron/worker"
-	"os"
 
 	"github.com/lampnick/doctron/app"
 	"github.com/lampnick/doctron/conf"
@@ -49,15 +49,14 @@ var rootCmd = &cobra.Command{
 }
 
 func initDoctronWorker() {
-	worker.Pool = tunny.NewFunc(conf.LoadedConfig.Doctron.MaxConvertWorker,worker.DoctronHandler)
+	worker.Pool = tunny.NewFunc(conf.LoadedConfig.Doctron.MaxConvertWorker, worker.DoctronHandler)
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
-		fmt.Println(err)
-		os.Exit(1)
+		log.Fatalf("[root Execute] err: %v", err)
 	}
 }
 
@@ -84,8 +83,7 @@ func initConfig() {
 		// Find home directory.
 		home, err := homedir.Dir()
 		if err != nil {
-			fmt.Println(err)
-			os.Exit(1)
+			log.Fatalf("[initConfig homedir] err: %v", err)
 		}
 
 		// Search config in home directory with name ".doctron" (without extension).
@@ -98,25 +96,19 @@ func initConfig() {
 	// If a config file is found, read it in.
 	conf.LoadedConfig = conf.NewConfig()
 	if err := viper.ReadInConfig(); err == nil {
-		fmt.Println("Using config file:", viper.ConfigFileUsed())
-		//config.Doctron.Env = viper.GetString("doctron.env")
-		//config.Doctron.Retry = viper.GetBool("doctron.retry")
-		//config.Doctron.MaxConvertQueue = viper.GetInt("doctron.maxConvertQueue")
-		//config.Doctron.MaxConvertWorker = viper.GetInt("doctron.maxConvertWorker")
-		//config.Doctron.ConvertTimeout = viper.GetInt("doctron.convertTimeout")
-		//err := viper.UnmarshalKey("doctron.user", &config.Doctron.User)
+		log.Println("Using config file:", viper.ConfigFileUsed())
 		err := viper.UnmarshalKey("doctron", &conf.LoadedConfig.Doctron)
 		if err != nil {
-			fmt.Println(err)
-			os.Exit(1)
+			log.Fatalf("[read config UnmarshalKey doctron] err: %v", err)
 		}
 		err = viper.UnmarshalKey("oss", &conf.LoadedConfig.Oss)
 		if err != nil {
-			fmt.Println(err)
-			os.Exit(1)
+			log.Fatalf("[read config UnmarshalKey oss] err: %v", err)
 		}
+	} else {
+		log.Fatalf("[read config ReadInConfig] err: %v", err)
 	}
-	fmt.Printf("[loaded config] %s\r\n", conf.LoadedConfig)
+	log.Printf("[loaded config] \r\n%s\r\n", conf.LoadedConfig)
 	initOssConfig(conf.LoadedConfig)
 }
 
