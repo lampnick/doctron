@@ -4,6 +4,7 @@
 
 - [Doctron简介](#doctron简介)
 - [在线体验](#在线体验)
+- [转换效果](#转换效果)
 - [鼓励一波](#鼓励一波)
 - [特性](#特性)
 - [安装](#安装)
@@ -34,6 +35,11 @@ Doctron是基于Docker、无状态、简单、快速、高质量的文档转换�
 ## 在线体验
 您可以打开下面的链接在线体验转换质量，由于服务器配置较低，以及网络原因，转换可能会慢一点，实际部署到服务器速度会不一样。
 [Doctron Live Demo](http://doctron.lampnick.com)
+
+## 转换效果
+- 源网页：https://support.apple.com/zh-cn/iphone-12-and-iphone-12-pro-service-program-for-no-sound-issues
+- 效果图：
+- ![avatar](test_data/preview.png)
 
 ## 鼓励一波
 如果您觉得Doctron这个服务还不错，请给个小星星，fork一下哦。您的鼓励是我前进的动力！
