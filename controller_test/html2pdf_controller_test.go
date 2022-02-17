@@ -1,20 +1,21 @@
 package controller_test
 
 import (
+	"testing"
+
 	"github.com/Jeffail/tunny"
 	"github.com/kataras/iris/v12/httptest"
 	"github.com/lampnick/doctron/app"
 	"github.com/lampnick/doctron/conf"
 	"github.com/lampnick/doctron/mock"
 	"github.com/lampnick/doctron/worker"
-	"testing"
 )
 
 func init() {
 	conf.LoadedConfig = conf.NewConfig()
 	conf.LoadedConfig.Doctron.Uploader = conf.DoctronUploaderMock
 	conf.LoadedConfig.Oss.PrivateServerDomain = "www.lampnick.com"
-	worker.Pool = tunny.NewFunc(conf.LoadedConfig.Doctron.MaxConvertWorker,worker.DoctronHandler)
+	worker.Pool = tunny.NewFunc(conf.LoadedConfig.Doctron.MaxConvertWorker, worker.DoctronHandler)
 }
 
 func TestHtml2Pdf(t *testing.T) {
@@ -28,7 +29,7 @@ func TestHtml2Pdf(t *testing.T) {
 	request.WithQuery("p", "lampnick")
 	request.WithQuery("url", ts.URL)
 	response := request.Expect().Status(httptest.StatusOK)
-	response.Body().Length().Equal(17468)
+	response.Body().Length().Equal(18296)
 }
 
 func TestHtml2PdfUpload(t *testing.T) {
