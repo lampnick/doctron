@@ -102,6 +102,8 @@ func convertToHtml2ImageParams(requestDTO *Html2ImageRequestDTO) doctron_core.Ht
 	params.Clip.Scale = requestDTO.ClipScale
 	params.FromSurface = requestDTO.FromSurface
 	params.WaitingTime = requestDTO.WaitingTime
+	params.IsAndroid = requestDTO.IsAndroid
+	params.IsIPhone = requestDTO.IsIPhone
 	return params
 }
 
@@ -117,5 +119,7 @@ func newDefaultHtml2ImageRequestDTO() *Html2ImageRequestDTO {
 		ClipScale:   doctron_core.DefaultViewportScale,
 		FromSurface: doctron_core.DefaultFromSurface,
 		WaitingTime: doctron_core.DefaultWaitingTime,
+		IsAndroid:   doctron_core.DefaultIsAndroid,
+		IsIPhone:    doctron_core.DefaultIsIPhone,
 	}
 }

@@ -41,6 +41,8 @@ type Html2ImageRequestDTO struct {
 	ClipScale   float64                      `schema:"clipScale,omitempty" validate:"omitempty"`   // Capture the screenshot of a given region only.Page scale factor.
 	FromSurface bool                         `schema:"fromSurface,omitempty" validate:"omitempty"` // Capture the screenshot from the surface, rather than the view. Defaults to true.
 	WaitingTime int                          `schema:"waitingTime,omitempty" validate:"omitempty"` // Waiting time after the page loaded. Default 0 means not wait. unit:Millisecond
+	IsAndroid   bool                         `schema:"isAndroid,omitempty" validate:"omitempty"`   // IsAndroid is an action to emulate a android device
+	IsIPhone    bool                         `schema:"isIPhone,omitempty" validate:"omitempty"`    // IsIPhone is an action to emulate a ios device
 }
 
 type PdfWatermarkRequestDTO struct {
