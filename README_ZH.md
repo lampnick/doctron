@@ -68,16 +68,22 @@ kubectl apply -f https://raw.githubusercontent.com/lampnick/doctron/master/manif
 ```
 - 从源码运行
 ```
+第一步：
+下载 google-chrome，并将 google-chrome 路径添加到 PATH 中
+第二步：
 git clone https://github.com/lampnick/doctron.git
 cd doctron
-go run main.go 
+go run main.go --config=./conf/default.yaml
 ```
 
 - 使用`go get`安装
 ```
+第一步：
+下载 google-chrome，并将 google-chrome 路径添加到 PATH 中
+第二步：
 go get -v github.com/lampnick/doctron
 下载完成之后直接运行
-doctron
+doctron --config=./conf/default.yaml
 ```
 
 ## 快速开始
