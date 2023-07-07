@@ -1,3 +1,5 @@
+### v0.3.3
+- support get wechat pages.
 ### v0.3.2
 - record read config error 
 - update bluemonday dependence for security reason
