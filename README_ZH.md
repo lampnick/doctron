@@ -113,6 +113,9 @@ http://127.0.0.1:8080/convert/html2pdf?u=doctron&p=lampnick&url=<url>&marginTop=
 - marginRight // 右外边距，单位英尺。默认纸0.4英尺（1厘米）. 
 - pageRanges // 需要打印的PDF的页数。默认为空字符串，表示所有页面.
 - ignoreInvalidPageRanges // 是否静默的忽略掉不可用的但是成功解析的页面。例如'3-2',默认false.
+- headerTemplate  // 打印标题的 HTML 模板。 应该是有效的 HTML 标记，具有以下类，用于将打印值注入其中： - 日期：格式化的打印日期 - 标题：文档标题 - url：文档位置 - pageNumber：当前页码 -totalPages：文档中的总页数 例如，< span class=title></span> 将生成包含标题的 span。
+- footerTemplate  // 打印页脚的 HTML 模板。 应使用与 headerTemplate 相同的格式。
+- preferCSSPageSize // 是否首选 css 定义的页面大小。 core.默认为 false，在这种情况下，内容将缩放以适合纸张大小。 (一般可以解决 单页转pdf会和指定大小不一致的情况)
 - WaitingTime // 页面加载后等待时长. 默认为0代表不等待. 单位：毫秒
 
 ### Html转图片
