@@ -34,7 +34,7 @@ Doctron是基于Docker、无状态、简单、快速、高质量的文档转换�
 
 ## 在线体验
 您可以打开下面的链接在线体验转换质量，由于服务器配置较低，以及网络原因，转换可能会慢一点，实际部署到服务器速度会不一样。
-[Doctron Live Demo](http://doctron.lampnick.com)
+[Doctron Live Demo](http://doctron.mitnick.fun)
 
 ## 转换效果
 - 源网页：https://support.apple.com/zh-cn/iphone-12-and-iphone-12-pro-service-program-for-no-sound-issues
