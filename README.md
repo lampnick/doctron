@@ -112,7 +112,10 @@ http://127.0.0.1:8080/convert/html2pdf?u=doctron&p=lampnick&url=<url>&marginTop=
 - marginRight // Right margin in inches. core.Defaults to 1cm (~0.4 inches).
 - pageRanges // Paper ranges to print, e.g., '1-5, 8, 11-13'. core.Defaults to the empty string, which means print all pages.
 - ignoreInvalidPageRanges // Whether to silently ignore invalid but successfully parsed page ranges, such as '3-2'. core.Defaults to false.
-- WaitingTime // Waiting time after the page loaded. Default 0 means not wait. unit:Millisecond
+- headerTemplate  // HTML template for the print header. Should be valid HTML markup with following classes used to inject printing values into them: - date: formatted print date - title: document title - url: document location - pageNumber: current page number - totalPages: total pages in the document  For example, <span class=title></span> would generate span containing the title.
+- footerTemplate  // HTML template for the print footer. Should use the same format as the headerTemplate.
+- preferCSSPageSize // Whether or not to prefer page size as defined by css. core.Defaults to false, in which case the content will be scaled to fit the paper size. (Generally, it can solve the problem that the single page converted to PDF will be inconsistent with the specified size)
+- WaitingTime // Waiting time after the page loaded. Default 0 means not wait. unit:Millisecond 
 
 ### Html convert to image
 ###### basic
