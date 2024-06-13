@@ -29,7 +29,7 @@ var ErrMsg = map[int]string{
 	InvalidParams:                       "invalid params",
 	InvalidUrl:                          "invalid url",
 	ApiRateLimitExceeded:                "api rate limit exceeded",
-	InvalidUrlScheme:                    "only support http/https",
+	InvalidUrlScheme:                    "only support http,https and file ",
 	ConvertPdfFailed:                    "failed convert html to pdf",
 	ConvertPdfWriteBytesFailed:          "failed convert html to pdf. write bytes failed",
 	ConvertPdfUploadFailed:              "failed convert html to pdf. upload failed",

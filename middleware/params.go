@@ -25,7 +25,7 @@ func CheckParams(ctx iris.Context) {
 		return
 	}
 
-	if u.Scheme != "http" && u.Scheme != "https" {
+	if u.Scheme != "http" && u.Scheme != "https" && u.Scheme != "file" {
 		outputDTO := common.NewDefaultOutputDTO(nil)
 		outputDTO.Code = common.InvalidUrlScheme
 		_, _ = common.NewJsonOutput(ctx, outputDTO)
